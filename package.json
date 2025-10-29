@@ -1,0 +1,17 @@
+{
+  "name": "shopping-cart-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
+    "docker:prod": "docker-compose up --build",
+    "docker:prod:down": "docker-compose down",
+    "docker:clean": "docker-compose down -v && docker system prune -f",
+    "docker:logs": "docker-compose logs -f",
+    "docker:logs:backend": "docker-compose logs -f backend",
+    "docker:logs:frontend": "docker-compose logs -f frontend",
+    "docker:restart": "docker-compose restart",
+    "docker:rebuild": "docker-compose down && docker-compose build --no-cache && docker-compose up"
+  }
+}
