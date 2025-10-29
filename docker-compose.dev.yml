@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: shopping-cart-mongo-dev
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: shopping_cart_dev
+    volumes:
+      - mongo-data-dev:/data/db
+    networks:
+      - shopping-cart-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Service (Development)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: shopping-cart-backend-dev
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+      - '9229:9229'  # Debug port
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/shopping_cart_dev
+      - CORS_ORIGIN=http://localhost:3000
+      - API_PREFIX=api/v1
+      - SWAGGER_ENABLED=true
+    volumes:
+      # Mount source code for hot-reload
+      - ./backend/src:/app/src:delegated
+      - ./backend/test:/app/test:delegated
+      # Prevent overwriting node_modules
+      - /app/node_modules
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - shopping-cart-network
+    command: npm run start:dev
+
+  # Frontend Service (Development)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: shopping-cart-frontend-dev
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
+      - WATCHPACK_POLLING=true  # Enable polling for file changes in Docker
+    volumes:
+      # Mount source code for hot-reload
+      - ./frontend/src:/app/src:delegated
+      - ./frontend/public:/app/public:delegated
+      # Prevent overwriting node_modules and .next
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - shopping-cart-network
+
+volumes:
+  mongo-data-dev:
+    driver: local
+
+networks:
+  shopping-cart-network:
+    driver: bridge
