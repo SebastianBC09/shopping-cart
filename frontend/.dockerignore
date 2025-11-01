@@ -3,7 +3,7 @@ npm-debug.log
 .next
 out
 .env
-.env.*
+.env.local
 .git
 .gitignore
 README.md
