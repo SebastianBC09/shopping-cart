@@ -54,7 +54,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: other/Dockerfile.dev
     container_name: shopping-cart-frontend-dev
     restart: unless-stopped
     ports:
