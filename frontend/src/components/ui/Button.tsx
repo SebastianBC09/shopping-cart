@@ -49,15 +49,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             // Outline - White with colored border
             'bg-white border-2 border-gray-300 text-gray-700 hover:border-primary-500 hover:text-primary-600 hover:bg-primary-50':
               variant === 'outline' && !disabled,
-            'focus-visible:ring-primary-500':
-              variant === 'outline',
-
-            // Ghost - Minimal, text only
-            'text-gray-700 hover:bg-gray-100 hover:text-gray-900 active:bg-gray-200':
-              variant === 'ghost' && !disabled,
-            'focus-visible:ring-gray-400':
-              variant === 'ghost',
-
             // Danger - Red for destructive actions
             'bg-error-600 text-white hover:bg-error-700 active:bg-error-800':
               variant === 'danger' && !disabled,

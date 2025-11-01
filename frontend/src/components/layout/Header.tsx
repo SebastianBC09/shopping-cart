@@ -25,7 +25,7 @@ export function Header() {
             aria-label="Shop Home"
           >
             <div className="relative">
-              <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-primary-500 via-primary-600 to-accent-600 flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:shadow-xl group-hover:shadow-primary-500/40 transition-all">
+              <div className="h-12 w-12 rounded-2xl bg-linear-to-br from-primary-500 via-primary-600 to-accent-600 flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:shadow-xl group-hover:shadow-primary-500/40 transition-all">
                 <Store className="h-6 w-6 text-white" strokeWidth={2.5} />
               </div>
               <div className="absolute -top-1 -right-1">
@@ -52,7 +52,7 @@ export function Header() {
 
                 // Active/Inactive states
                 isActive('/')
-                  ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
+                  ? 'bg-linear-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
                   : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
               )}
               aria-current={isActive('/') ? 'page' : undefined}
@@ -72,7 +72,7 @@ export function Header() {
 
                 // Active/Inactive states with accent color
                 isActive('/cart')
-                  ? 'bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/30'
+                  ? 'bg-linear-to-r from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/30'
                   : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
               )}
               aria-current={isActive('/cart') ? 'page' : undefined}
