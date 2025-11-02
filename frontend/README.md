@@ -124,35 +124,35 @@ src/
 
 ```mermaid
 flowchart TB
-    subgraph User["👤 User"]
+    subgraph User["👤 USER"]
         Browser[Web Browser]
     end
 
-    subgraph Presentation["🎨 Presentation Layer"]
-        Pages[Pages<br/>Next.js App Router]
+    subgraph Presentation["🎨 PRESENTATION LAYER"]
+        Pages[Pages - Next.js App Router]
         Components[React Components]
 
         subgraph ComponentTypes["Component Types"]
-            CartComps[Cart Components<br/>CartItem, CartSummary]
-            ItemComps[Items Components<br/>ItemCard, ItemsList]
-            LayoutComps[Layout Components<br/>Header, Footer]
-            UIComps[UI Components<br/>Button, Badge, Input]
+            CartComps["Cart Components<br/>CartItem | CartSummary"]
+            ItemComps["Items Components<br/>ItemCard | ItemsList"]
+            LayoutComps["Layout Components<br/>Header | Footer"]
+            UIComps["UI Components<br/>Button | Badge | Input"]
         end
     end
 
-    subgraph State["🔄 State Layer"]
+    subgraph State["🔄 STATE LAYER"]
         Zustand[Zustand Store<br/>Global Cart State]
         ReactQuery[React Query<br/>Cache & Sync]
-        CustomHooks[Custom Hooks<br/>useCart, useItems]
+        CustomHooks["Custom Hooks<br/>useCart | useItems"]
     end
 
-    subgraph Business["⚙️ Business Logic Layer"]
-        API[API Layer<br/>Axios Client]
-        Utils[Utilities<br/>Formatters, Validators]
+    subgraph Business["⚙️ BUSINESS LOGIC"]
+        API[API Layer - Axios Client]
+        Utils["Utilities<br/>Formatters | Validators"]
         Types[TypeScript Types<br/>Type Safety]
     end
 
-    subgraph External["🌐 External Services"]
+    subgraph External["🌐 EXTERNAL SERVICES"]
         Backend[Backend API<br/>NestJS REST API]
         Session[Session Management<br/>Cookies]
     end
@@ -181,12 +181,12 @@ flowchart TB
     Backend --> Session
     Session --> Browser
 
-    %% Styles
-    classDef presentation fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    classDef state fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-    classDef business fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    classDef external fill:#e0f2f1,stroke:#00796b,stroke-width:2px
-    classDef user fill:#f1f8e9,stroke:#689f38,stroke-width:2px
+    %% Enhanced Styles with Better Contrast
+    classDef presentation fill:#ffb74d,stroke:#e65100,stroke-width:3px,color:#000
+    classDef state fill:#66bb6a,stroke:#1b5e20,stroke-width:3px,color:#000
+    classDef business fill:#ba68c8,stroke:#4a148c,stroke-width:3px,color:#fff
+    classDef external fill:#4dd0e1,stroke:#006064,stroke-width:3px,color:#000
+    classDef user fill:#9ccc65,stroke:#33691e,stroke-width:3px,color:#000
 
     class Pages,Components,ComponentTypes,CartComps,ItemComps,LayoutComps,UIComps presentation
     class Zustand,ReactQuery,CustomHooks state
@@ -383,7 +383,7 @@ sequenceDiagram
 1. **Clone the repository:**
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/SebastianBC09/shopping-cart/tree/main/frontend
 cd frontend
 ```
 
@@ -627,56 +627,6 @@ npm run type-check       # Check TypeScript types
 
 ---
 
-## 🎓 Learning Resources
-
-This project demonstrates:
-
-- ✅ Next.js 16 App Router with Server Components
-- ✅ React 19 with modern hooks
-- ✅ TypeScript for type safety
-- ✅ State management with Zustand
-- ✅ Data fetching with React Query
-- ✅ Responsive design with Tailwind CSS
-- ✅ Reusable component patterns
-- ✅ Error handling and loading states
-- ✅ Performance optimization
-
----
-
-## 📖 Additional Documentation
-
-### Folder Structure
-
-- **`/app`**: Next.js routes and pages
-- **`/components`**: React components organized by domain
-- **`/lib`**: Business logic, hooks, API, and utilities
-- **`/public`**: Static files
-
-### Code Conventions
-
-- Components in PascalCase: `ItemCard.tsx`
-- Hooks with "use" prefix: `useCart.ts`
-- Utilities in camelCase: `formatters.ts`
-- Types in PascalCase: `Cart`, `Item`
-- Constants in UPPER_SNAKE_CASE
-
----
-
-## 🧪 Testing (Coming Soon)
-
-```bash
-# Unit tests
-npm test
-
-# Tests with coverage
-npm run test:coverage
-
-# E2E tests
-npm run test:e2e
-```
-
----
-
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
@@ -741,32 +691,18 @@ This frontend application connects to the [Backend API](../backend/README.md) to
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Autor
 
-**Your Name** - _Fullstack Developer_
+**Sebastian Ballen C** - _FullStack Developer_
 
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Sebastian B.](https://www.linkedin.com/in/sebastianballencastaneda-softwaredeveloper)
+- Email: sebastian.ballenc@gmail.com
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-Built as part of a technical assessment demonstrating:
-
-- Modern frontend architecture
-- Clean code principles
-- Professional UI/UX design
-- Next.js and React mastery
-- TypeScript and type safety
-- Advanced state management
 
 ---
 
